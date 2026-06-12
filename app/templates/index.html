@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CardioIA — Assistente Cardiológico Virtual</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0d1b2a, #1b263b);
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      color: #e0e1dd; padding: 20px;
+    }
+    .card {
+      background: #1b263b; border: 1px solid #415a77; border-radius: 16px;
+      padding: 36px; max-width: 480px; width: 100%; text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    }
+    h1 { font-size: 1.5rem; margin-bottom: 4px; }
+    h1 span { color: #ef476f; }
+    .sub { color: #778da9; font-size: .9rem; margin-bottom: 24px; }
+    .dropzone {
+      border: 2px dashed #415a77; border-radius: 12px; padding: 32px 16px;
+      cursor: pointer; transition: border-color .2s; margin-bottom: 16px;
+    }
+    .dropzone:hover { border-color: #ef476f; }
+    .dropzone img { max-width: 100%; max-height: 240px; border-radius: 8px; }
+    button {
+      background: #ef476f; color: #fff; border: none; border-radius: 8px;
+      padding: 12px 32px; font-size: 1rem; cursor: pointer; width: 100%;
+      transition: opacity .2s;
+    }
+    button:disabled { opacity: .4; cursor: not-allowed; }
+    .resultado {
+      margin-top: 20px; padding: 16px; border-radius: 10px; display: none;
+      font-size: 1.1rem; font-weight: 600;
+    }
+    .resultado.normal { background: #1f3d2b; color: #7ae582; display: block; }
+    .resultado.pneumonia { background: #43222a; color: #ff8fa3; display: block; }
+    .confianca { font-size: .85rem; font-weight: 400; margin-top: 6px; opacity: .85; }
+    .aviso { font-size: .75rem; color: #778da9; margin-top: 18px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Cardio<span>IA</span> — Análise de Raio-X</h1>
+    <p class="sub">Classificação por Visão Computacional (CNN · VGG16)</p>
+
+    <div class="dropzone" id="dropzone" onclick="document.getElementById('arquivo').click()">
+      <p id="placeholder">📤 Clique para enviar um raio-X de tórax<br><small>(JPEG ou PNG)</small></p>
+      <img id="preview" style="display:none" alt="pré-visualização" />
+    </div>
+    <input type="file" id="arquivo" accept="image/*" hidden />
+
+    <button id="analisar" disabled>Analisar imagem</button>
+
+    <div class="resultado" id="resultado">
+      <span id="classe"></span>
+      <div class="confianca" id="confianca"></div>
+    </div>
+
+    <p class="aviso">⚕️ Protótipo educacional (FIAP — Fase 4). Não substitui diagnóstico médico.</p>
+  </div>
+
+  <script>
+    const input = document.getElementById('arquivo');
+    const preview = document.getElementById('preview');
+    const placeholder = document.getElementById('placeholder');
+    const btn = document.getElementById('analisar');
+    const resultado = document.getElementById('resultado');
+
+    input.addEventListener('change', () => {
+      const file = input.files[0];
+      if (!file) return;
+      preview.src = URL.createObjectURL(file);
+      preview.style.display = 'block';
+      placeholder.style.display = 'none';
+      btn.disabled = false;
+      resultado.className = 'resultado';
+    });
+
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
+      btn.textContent = 'Analisando…';
+      const form = new FormData();
+      form.append('imagem', input.files[0]);
+
+      try {
+        const resp = await fetch('/predict', { method: 'POST', body: form });
+        const dados = await resp.json();
+        if (dados.erro) throw new Error(dados.erro);
+
+        document.getElementById('classe').textContent =
+          dados.classe === 'PNEUMONIA' ? '⚠️ PNEUMONIA detectada' : '✅ NORMAL';
+        document.getElementById('confianca').textContent =
+          `Confiança do modelo: ${dados.confianca}%`;
+        resultado.className = 'resultado ' + dados.classe.toLowerCase();
+      } catch (e) {
+        document.getElementById('classe').textContent = '❌ ' + e.message;
+        resultado.className = 'resultado pneumonia';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Analisar imagem';
+      }
+    });
+  </script>
+</body>
+</html>
