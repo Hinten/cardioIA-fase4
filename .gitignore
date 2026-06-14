@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Modelo treinado (gerado pelo Notebook 2; pode ser grande)
+*.keras
+*.h5
+
+# Node / Expo (o app mobile tem seu próprio .gitignore em mobile/)
+node_modules/
+.expo/
+
+# Sistema
+.DS_Store

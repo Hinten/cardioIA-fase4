@@ -16,9 +16,13 @@ from pathlib import Path
 import numpy as np
 import tensorflow as tf
 from flask import Flask, jsonify, render_template, request
+from flask_cors import CORS
 from PIL import Image
 
 app = Flask(__name__)
+# CORS liberado para o app mobile (Ir Além 2): o endpoint /predict passa a
+# responder tanto ao Expo Go (celular) quanto ao Expo Web (navegador).
+CORS(app)
 
 IMG_SIZE = (150, 150)
 CLASS_NAMES = ["NORMAL", "PNEUMONIA"]
