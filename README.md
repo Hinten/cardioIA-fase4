@@ -23,8 +23,12 @@ cardioia-fase4/
 ├── relatorio/
 │   └── parte1_relatorio.md            # Relatório do pipeline (1-2 páginas)
 ├── app/
-│   ├── app.py                         # Protótipo web Flask
+│   ├── app.py                         # Protótipo web Flask (+ CORS p/ o mobile)
 │   └── templates/index.html           # Interface de upload e classificação
+├── mobile/                            # Ir Além 2 — app React Native (Expo)
+│   ├── App.js                         # Tela de upload + exibição do resultado
+│   ├── src/                           # config.js (BACKEND_URL) e api.js (integração)
+│   └── README.md                      # Documentação detalhada do app mobile
 ├── requirements.txt
 └── README.md
 ```
@@ -50,6 +54,26 @@ cd app
 python app.py
 # acesse http://localhost:5000
 ```
+
+### App React Native (Ir Além 2 — Expo)
+
+Protótipo em **React Native (Expo)** que consome o mesmo backend Flask e exibe a categoria
+detectada pela CNN. Roda da **mesma base** de dois jeitos:
+
+**No navegador (recomendado — local, sem celular):**
+
+```bash
+# com o backend Flask já rodando em localhost:5000 (BACKEND_URL já vem como localhost):
+cd mobile
+npm install
+npx expo start --web    # abre o app no navegador (~http://localhost:8081)
+```
+
+**No celular (Expo Go):** ajuste `mobile/src/config.js` para o IP da sua máquina e rode
+`npx expo start` para escanear o QR code.
+
+Passo a passo completo (pré-requisitos, configuração, troubleshooting e roteiro do vídeo) em
+[`mobile/README.md`](mobile/README.md).
 
 ## 🧠 Dataset
 
@@ -77,4 +101,5 @@ precision, recall, F1) gerados pelo Notebook 2._
 | Protótipo de apresentação (2 pts) | Seção 7 do Notebook 2 (interativo) + `app/` (Flask) |
 | Documentação (1 pt) | README + relatório + markdown nos notebooks |
 | Trabalho em equipe (1 pt extra) | Tabela de divisão de tarefas acima |
+| **Ir Além 2 — App mobile (React Native)** | `mobile/` + [`mobile/README.md`](mobile/README.md) |
 
