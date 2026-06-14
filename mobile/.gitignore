@@ -1,0 +1,16 @@
+# Dependências instaladas localmente (recriadas com `npm install`)
+node_modules/
+
+# Artefatos e cache do Expo
+.expo/
+dist/
+web-build/
+
+# Logs e ambiente
+npm-debug.*
+*.log
+.env
+.env.local
+
+# macOS
+.DS_Store
