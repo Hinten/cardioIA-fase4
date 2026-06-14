@@ -55,18 +55,25 @@ python app.py
 # acesse http://localhost:5000
 ```
 
-### App mobile (Ir Além 2 — React Native / Expo)
+### App React Native (Ir Além 2 — Expo)
 
-Protótipo mobile que consome o mesmo backend Flask e exibe a categoria detectada pela CNN
-no celular. Passo a passo completo (instalação, configuração do IP do backend, execução via
-Expo Go e roteiro do vídeo) em [`mobile/README.md`](mobile/README.md).
+Protótipo em **React Native (Expo)** que consome o mesmo backend Flask e exibe a categoria
+detectada pela CNN. Roda da **mesma base** de dois jeitos:
+
+**No navegador (recomendado — local, sem celular):**
 
 ```bash
-# com o backend Flask já rodando e o IP ajustado em mobile/src/config.js:
+# com o backend Flask já rodando em localhost:5000 (BACKEND_URL já vem como localhost):
 cd mobile
 npm install
-npx expo start   # escaneie o QR code com o app Expo Go
+npx expo start --web    # abre o app no navegador (~http://localhost:8081)
 ```
+
+**No celular (Expo Go):** ajuste `mobile/src/config.js` para o IP da sua máquina e rode
+`npx expo start` para escanear o QR code.
+
+Passo a passo completo (pré-requisitos, configuração, troubleshooting e roteiro do vídeo) em
+[`mobile/README.md`](mobile/README.md).
 
 ## 🧠 Dataset
 

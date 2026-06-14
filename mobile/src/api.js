@@ -4,6 +4,8 @@
  * Envia a imagem selecionada para o endpoint POST /predict usando multipart/form-data
  * no mesmo campo ("imagem") esperado pela API, e devolve o JSON de classificação.
  */
+import { Platform } from 'react-native';
+
 import { BACKEND_URL } from './config';
 
 /**
@@ -16,13 +18,22 @@ import { BACKEND_URL } from './config';
 export async function classificarImagem(uri) {
   const form = new FormData();
 
-  // No React Native, anexamos o arquivo como um objeto { uri, name, type }.
-  // O nome do campo ("imagem") precisa bater com o que o Flask lê em request.files.
-  form.append('imagem', {
-    uri,
-    name: 'raiox.jpg',
-    type: 'image/jpeg',
-  });
+  // O campo ("imagem") precisa bater com o que o Flask lê em request.files.
+  // A forma de anexar o arquivo difere entre navegador e React Native nativo:
+  if (Platform.OS === 'web') {
+    // No navegador (Expo Web), a uri é um blob:/data: URL. O FormData exige um
+    // Blob/File real — buscamos o conteúdo e anexamos como Blob (anexar o objeto
+    // { uri, ... } resultaria em "[object Object]" no servidor).
+    const blob = await (await fetch(uri)).blob();
+    form.append('imagem', blob, 'raiox.jpg');
+  } else {
+    // No React Native (Expo Go), anexamos o arquivo como objeto { uri, name, type }.
+    form.append('imagem', {
+      uri,
+      name: 'raiox.jpg',
+      type: 'image/jpeg',
+    });
+  }
 
   let resposta;
   try {
