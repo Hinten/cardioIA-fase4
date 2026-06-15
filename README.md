@@ -8,8 +8,8 @@ Redes Neurais Convolucionais, comparando uma **CNN treinada do zero** com
 
 | Nome | RM | Responsabilidade |
 |---|---|---|
-| _[preencher]_ | _[RM]_ | Pré-processamento (Parte 1) |
-| _[preencher]_ | _[RM]_ | Modelos CNN / Transfer Learning (Parte 2) |
+| Pedro Lucas Tostes Silva | rm561644 | Pré-processamento (Parte 1) |
+| Alice | _[RM]_ | Modelos CNN / Transfer Learning (Parte 2) |
 | _[preencher]_ | _[RM]_ | Protótipo de interface |
 | _[preencher]_ | _[RM]_ | Documentação e relatórios |
 
@@ -83,13 +83,23 @@ escolha no relatório da Parte 1.
 
 ## 📊 Resultados
 
-_Preencher após o treino com os prints das métricas (acurácia, matriz de confusão,
-precision, recall, F1) gerados pelo Notebook 2._
+Métricas obtidas no conjunto de teste (624 imagens), geradas pelo
+[`02_cnn_transfer_learning.ipynb`](notebooks/02_cnn_transfer_learning.ipynb):
 
-| Modelo | Acurácia | Recall (PNEUMONIA) | F1 macro |
-|---|---|---|---|
-| CNN do zero | _—_ | _—_ | _—_ |
-| Transfer Learning (VGG16) | _—_ | _—_ | _—_ |
+| Modelo | Acurácia | Recall (PNEUMONIA) | Recall (NORMAL) | F1 macro |
+|---|---|---|---|---|
+| CNN do zero | 88,62% | 98,46% | 72,22% | 0,8709 |
+| Transfer Learning (VGG16) | 80,29% | 98,72% | 49,57% | 0,7579 |
+
+**Modelo selecionado:** `cnn_do_zero` (maior F1 macro) — é o modelo salvo em
+`modelo_cardioia.keras`, consumido pelo app Flask e pelo app mobile.
+
+> **Leitura dos resultados:** ambos os modelos atingiram recall de PNEUMONIA acima de
+> 98% — ótimo para triagem, pois minimiza falsos negativos (casos doentes não
+> identificados). Porém o VGG16 com fine-tuning teve recall de NORMAL baixo (49,57%),
+> classificando muitos exames saudáveis como PNEUMONIA (falsos positivos). A CNN do
+> zero apresentou o melhor equilíbrio entre as duas classes (F1 macro 0,8709) e por
+> isso foi o modelo escolhido.
 
 ## ✅ Mapeamento dos critérios de avaliação
 
