@@ -273,7 +273,7 @@ A partir desta raiz, navegue para os documentos e códigos de cada entregável:
 | Implementação de Transfer Learning | 2 | [`notebooks/02_cnn_transfer_learning.ipynb`](notebooks/02_cnn_transfer_learning.ipynb), seção 4 + [`relatorio/parte2_relatorio.md`](relatorio/parte2_relatorio.md) |
 | Apresentação dos resultados em protótipo | 2 | Seção 7 do Notebook 2 (interativo) + [`app/`](app/) (Flask) + [`mobile/`](mobile/) |
 | Documentação clara | 1 | Este README (padrão FIAP) + relatórios + markdown nos notebooks |
-| Trabalho em equipe (grupo de 2 a 5) | 1 (extra) | Equipe de 5 integrantes + divisão de tarefas acima |
+| Trabalho em equipe (grupo de 2 a 5) | 1 (extra) | Equipe de 5 integrantes |
 | **Ir Além 1 — Ética e Governança** | — | [`notebooks/03_etica_governanca.ipynb`](notebooks/03_etica_governanca.ipynb) + [`relatorio/ir_alem1_etica_governanca.md`](relatorio/ir_alem1_etica_governanca.md) |
 | **Ir Além 2 — App mobile (React Native)** | — | [`mobile/`](mobile/) + [`mobile/README.md`](mobile/README.md) + [vídeo](https://youtu.be/iXRMJa-MHxI) |
 
