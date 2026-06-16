@@ -33,6 +33,14 @@ cardioia-fase4/
 └── README.md
 ```
 
+## 🎬 Vídeo de demonstração — Ir Além 2
+
+[![Demonstração do app mobile CardioIA](https://img.youtube.com/vi/iXRMJa-MHxI/0.jpg)](https://youtu.be/iXRMJa-MHxI)
+
+Vídeo mostrando o app React Native (Expo) em funcionamento: upload de raio-X → integração com o backend Flask → exibição da categoria detectada pela CNN (NORMAL / PNEUMONIA) com confiança.
+
+---
+
 ## 🚀 Como executar
 
 ### Notebooks (Google Colab — recomendado)
@@ -111,5 +119,6 @@ Métricas obtidas no conjunto de teste (624 imagens), geradas pelo
 | Protótipo de apresentação (2 pts) | Seção 7 do Notebook 2 (interativo) + `app/` (Flask) |
 | Documentação (1 pt) | README + relatório + markdown nos notebooks |
 | Trabalho em equipe (1 pt extra) | Tabela de divisão de tarefas acima |
-| **Ir Além 2 — App mobile (React Native)** | `mobile/` + [`mobile/README.md`](mobile/README.md) |
+| **Ir Além 2 — App mobile (React Native)** | `mobile/` + [`mobile/README.md`](mobile/README.md) + [vídeo de demonstração](https://youtu.be/iXRMJa-MHxI) |
+| **Ir Além 1 — Ética e Governança** | `notebooks/03_etica_governanca.ipynb` + `relatorio/ir_alem1_etica_governanca.md` |
 

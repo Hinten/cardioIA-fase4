@@ -158,20 +158,18 @@ que continua contendo apenas `README.md` e `requirements.txt`.
 
 ---
 
-## 🎬 Roteiro do vídeo (≤ 3 minutos)
+## 🎬 Vídeo de demonstração
 
-Entregável do Ir Além 2. **Sugestão mais simples: grave a tela do PC** rodando no navegador
-(`npx expo start --web`) — dispensa capturar a tela do celular. (Se preferir, grave o celular
-pelo Expo Go; o fluxo é idêntico.)
+**Link:** https://youtu.be/iXRMJa-MHxI
 
-1. **(0:00–0:20)** Mostre o backend Flask rodando no terminal (`python app.py`).
-2. **(0:20–0:40)** Abra o app (navegador ou Expo Go); mostre a tela inicial do CardioIA.
-3. **(0:40–1:20)** Selecione um raio-X **NORMAL**; clique em "Analisar imagem"; mostre o
-   resultado **✅ NORMAL** com a confiança.
-4. **(1:20–2:10)** Repita com um raio-X de **PNEUMONIA**; mostre o resultado
-   **⚠️ PNEUMONIA detectada** com a confiança.
-5. **(2:10–2:40)** Comente brevemente a integração (app React Native → Flask → CNN → resultado).
-6. **(2:40–3:00)** Reforce o aviso de que é um protótipo educacional.
+[![Demonstração do app mobile CardioIA](https://img.youtube.com/vi/iXRMJa-MHxI/0.jpg)](https://youtu.be/iXRMJa-MHxI)
+
+O vídeo (≤ 3 min) mostra o app React Native em funcionamento:
+1. Backend Flask rodando no terminal.
+2. Tela inicial do CardioIA no navegador (Expo Web).
+3. Upload de raio-X **NORMAL** → resultado **✅ NORMAL** com confiança.
+4. Upload de raio-X **PNEUMONIA** → resultado **⚠️ PNEUMONIA detectada** com confiança.
+5. Comentário sobre a integração: app React Native → Flask → CNN → resultado.
 
 ---
 
