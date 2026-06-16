@@ -69,16 +69,6 @@ pediátrica, ausência de metadados demográficos, desbalanceamento) e aplicamos
 **fairness** (Equalized Odds / Equal Opportunity, FPR/FNR, calibração), propondo mitigações
 (`notebooks/03_etica_governanca.ipynb` e `relatorio/ir_alem1_etica_governanca.md`).
 
-**Divisão de tarefas (equipe de 5 integrantes).**
-
-| Integrante | Responsabilidade principal |
-|---|---|
-| Pedro L. T. Silva | Parte 1 — pré-processamento e organização das imagens |
-| Alice C. M. Assis | Parte 2 — CNN do zero e Transfer Learning (VGG16) |
-| Vitor A. Bezerra | Protótipo web (Flask) e interface de classificação |
-| Leonardo S. Souza | Ir Além 2 — app mobile React Native (Expo) |
-| Lucas B. Francelino | Ir Além 1 — ética/fairness, documentação e relatórios |
-
 ## 📁 Estrutura de pastas
 
 Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
